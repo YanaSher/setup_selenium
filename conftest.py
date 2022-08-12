@@ -1,12 +1,6 @@
-from urllib import request
 import os
 import pytest
 from selenium import webdriver
-from selenium.webdriver.opera.options import Options as OperaOptions
-
-
-# DRIVER = "~/Drivers/"
-# DRIVER = "/home/lin/Drivers/"
 
 
 # довляем возможность выбирать браузер и папку с драйверами и адресс в командной строке
@@ -29,15 +23,6 @@ def browser(request):
         driver = webdriver.Edge(executable_path=f"{drivers}/msedgedriver")
     elif browser_name == "opera":
         driver = webdriver.Opera(executable_path=f"{drivers}/operadriver")
-    #    elif browser_name == "opera":
-    #        options = OperaOptions()
-    #        options.binary_location = r"/snap/bin/opera"
-    #        browser = webdriver.Opera(executable_path=f"{drivers}/operadriver", options=options)
-    #    elif browser_name == "opera2":
-    #        ChromeDriverService service = new ChromeDriverService.Builder().usingDriverExecutable(new File(f"{drivers}/operadriver")).build();
-    #        ChromeDriver driver = new ChromeDriver(service);
-    #        driver.get("http://selenium2.ru/");
-    #        driver.quit();
     else:
         raise ValueError("Browser not supported!")
 
