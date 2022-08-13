@@ -1,23 +1,21 @@
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
-from page_objects.locators.catalog_page_locator import CatalogPage
+from page_objects.catalog_page import CatalogPage
 
 
 # поиск элементов на странице каталога
-def test_catalog_page_external(browser):
-    browser.get(browser.url + "/camera")
-    browser.find_element(*CatalogPage.CATALOG_HEADER)
-    browser.find_element(*CatalogPage.HEADER_TEXT)
-    browser.find_element(*CatalogPage.LIST_VIEW)
-    browser.find_element(*CatalogPage.GREED_VIEW)
-    browser.find_element(*CatalogPage.BUTTON_SHOW)
-    browser.find_element(*CatalogPage.BUTTON_SORT_BY)
+def test_catalog_page_external(browser, url):
+    catalog_page = CatalogPage(browser)
+    catalog_page.open(url)
+    catalog_page.verify_catalog_header()
+    catalog_page.verify_header_text()
+    catalog_page.verify_list_view()
+    catalog_page.verify_greed_view()
+    catalog_page.verify_button_show()
+    catalog_page.verify_button_sort_by()
 
 
 # проверка переключений по товарам
-def test_catalog_page_different_product(browser):
-    browser.get(browser.url + "/camera")
-    browser.find_element(*CatalogPage.BUTTON_DESKTOPS).click()
-    WebDriverWait(browser, 5).until(EC.visibility_of_element_located(CatalogPage.HEADER_DESKTOPS))
-    browser.find_element(*CatalogPage.BUTTON_LAPTOPS_NOTEBOOKS).click()
-    WebDriverWait(browser, 5).until(EC.visibility_of_element_located(CatalogPage.HEADER_LAPTOPS_NOTEBOOKS))
+def test_catalog_page_different_product(browser, url):
+    catalog_page = CatalogPage(browser)
+    catalog_page.open(url)
+    catalog_page.transition_to_Desktops()
+    catalog_page.transition_to_Laptops_and_Notebooks()

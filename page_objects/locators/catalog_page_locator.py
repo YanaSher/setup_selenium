@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class CatalogPage:
+class CatalogPageLocator:
     CATALOG_HEADER = (By.CSS_SELECTOR, "h2")
     HEADER_TEXT = (By.XPATH, "//h2[text()='Cameras']")
     LIST_VIEW = (By.CSS_SELECTOR, "#list-view")

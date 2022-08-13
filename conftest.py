@@ -3,11 +3,16 @@ import pytest
 from selenium import webdriver
 
 
+
 # довляем возможность выбирать браузер и папку с драйверами и адресс в командной строке
 def pytest_addoption(parser):
     parser.addoption("--browser", default="firefox")
     parser.addoption("--drivers", default=os.path.expanduser("~/Drivers"))
     parser.addoption("--url", action="store", default="http://192.168.0.207:8081/")
+
+@pytest.fixture
+def url(request):
+    return request.config.getoption("--url")
 
 
 @pytest.fixture
@@ -29,7 +34,13 @@ def browser(request):
     driver.maximize_window()
     request.addfinalizer(driver.close)
 
-    driver.get(url)
-    driver.url = url
+    def open(path=""):
+        return driver.get(url + path)
+
+    driver.open = open
+    driver.open()
+
+#    driver.get(url)
+#    driver.url = url
 
     return driver

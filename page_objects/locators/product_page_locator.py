@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class ProductPage:
+class ProductPageLocator:
     HEADER_PRODUCT = (By.XPATH, "//h1[text()='Nikon D300']")
     PRODUCT_PRICE = (By.XPATH, "//h2[text()='$98.00']")
     ADD_BUTTON = (By.CSS_SELECTOR, "#button-cart")
