@@ -10,4 +10,3 @@ def test_product_page_external(browser, url):
     product_page.verify_product_price()
     product_page.verify_twit_link()
     product_page.verify_count_input()
-

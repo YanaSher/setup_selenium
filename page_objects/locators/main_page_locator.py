@@ -11,3 +11,4 @@ class MainPageLocators:
     EURO_CURRENCY = (By.CSS_SELECTOR, "[name=EUR]")
     GBP_CURRENCY = (By.CSS_SELECTOR, "[name=GBP]")
     USD_CURRENCY = (By.CSS_SELECTOR, "[name=USD]")
+    CURRENCY_SYMBOL = (By.CSS_SELECTOR, ".dropdown-toggle>strong")

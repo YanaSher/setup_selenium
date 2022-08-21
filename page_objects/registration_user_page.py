@@ -1,6 +1,6 @@
 from page_objects.base_page import BasePage
 from page_objects.locators.registration_user_locator import RegistrationUserLocator
-
+from randomaizer import random_string, random_email, random_telefone_number
 
 class RegistrationUserPage(BasePage):
     def transition_to_Registration_User(self):
@@ -36,3 +36,27 @@ class RegistrationUserPage(BasePage):
 
     def veify_continue_button(self):
         self.verify_element_presence(RegistrationUserLocator.CONTINUE_BUTTON)
+
+    def input_first_name(self):
+        self.input_text(RegistrationUserLocator.FIRST_NAME_INPUT, random_string(7))
+
+    def input_last_name(self):
+        self.input_text(RegistrationUserLocator.LAST_NAME_INPUT, random_string(11))
+
+    def input_email(self):
+        self.input_text(RegistrationUserLocator.EMAIL_INPUT, random_email(7, 5))
+
+    def input_telephone(self):
+        self.input_text(RegistrationUserLocator.TELEPHONE_INPUT, random_telefone_number())
+
+    def input_password(self, text):
+        self.input_text(RegistrationUserLocator.PASSWORD_INPUT, text)
+
+    def input_confirm_password(self, text):
+        self.input_text(RegistrationUserLocator.CONFIRM_PASSWORD_INPUT, text)
+
+    def click_check_box(self):
+        self.click_element(RegistrationUserLocator.CHECK_BOX_POLICY)
+
+    def click_button_continue(self):
+        self.click_element(RegistrationUserLocator.CONTINUE_BUTTON)

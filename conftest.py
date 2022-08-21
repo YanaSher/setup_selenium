@@ -34,13 +34,13 @@ def browser(request):
     driver.maximize_window()
     request.addfinalizer(driver.close)
 
-    def open(path=""):
-        return driver.get(url + path)
+#    def open(path=""):
+#       return driver.get(url + path)
 
-    driver.open = open
-    driver.open()
+#    driver.open = open
+#    driver.open()
 
-#    driver.get(url)
-#    driver.url = url
+    driver.get(url)
+    driver.url = url
 
     return driver

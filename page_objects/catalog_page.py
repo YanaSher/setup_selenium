@@ -33,4 +33,3 @@ class CatalogPage(BasePage):
     def transition_to_Laptops_and_Notebooks(self):
         self.click_element(CatalogPageLocator.BUTTON_LAPTOPS_NOTEBOOKS)
         self.verify_element_presence(CatalogPageLocator.HEADER_LAPTOPS_NOTEBOOKS)
-

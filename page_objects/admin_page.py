@@ -1,5 +1,6 @@
 from page_objects.base_page import BasePage
 from page_objects.locators.login_admin_page_locator import AdminPageLocator
+from page_objects.elements.login_form import LoginForm
 
 
 class AdminPage(BasePage):
@@ -22,3 +23,8 @@ class AdminPage(BasePage):
 
     def verify_opencart_link(self):
         self.verify_element_presence(AdminPageLocator.OPENCART_LINK)
+
+    def login_admin(self, username, password):
+        LoginForm(self.browser).login_with_admin(username, password)
+        self.verify_element_presence(LoginForm.ADMIN_PAGE_HEADER)
+        return self
