@@ -7,7 +7,6 @@ class AdminProductPage(BasePage):
 
     def __init__(self, browser):
         super().__init__(browser)
-        #       self.text_name = random_string(10)
         self.text_name = "NjaiFas"
 
     def click_add_product_button(self):
