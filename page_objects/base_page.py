@@ -1,4 +1,5 @@
 import logging
+import allure
 
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
@@ -7,16 +8,15 @@ from selenium.webdriver.common.alert import Alert
 
 
 class BasePage:
-    def __init__(self, browser, driver):
+    def __init__(self, browser):
         self.browser = browser
-        self.driver = driver
         self.logger = logging.getLogger(type(self).__name__)
-        #настройка обработчика и форматировщика
-        file_handler = logging.FileHandler(f"logs/{self.driver.test_name}.log")
+        # настройка обработчика и форматировщика
+        file_handler = logging.FileHandler(f"logs/{self.browser.test_name}.log")
         file_handler.setFormatter(logging.Formatter('%(name)s - %(levelname)s - %(message)s'))
-        #добавление обработчика к логгеру
+        # добавление обработчика к логгеру
         self.logger.addHandler(file_handler)
-        self.logger.setLevel(level=self.driver.log_level)
+        self.logger.setLevel(level=self.browser.log_level)
 
     def verify_element_presence(self, locator: tuple):
         try:
@@ -24,6 +24,11 @@ class BasePage:
             return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located(locator))
         except TimeoutException:
             self.logger.info(f"Element {locator} is not visibility")
+            allure.attach(
+                name=self.browser.session_id,
+                body=self.browser.get_screenshot_as_png(),
+                attachment_type=allure.attachment_type.PNG
+            )
             raise AssertionError("Cant find element by locator: {}".format(locator))
 
     def click_element(self, locator: tuple):
