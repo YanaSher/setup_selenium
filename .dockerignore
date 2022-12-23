@@ -1,0 +1,16 @@
+#Ignor virtual environment
+.venv/
+venv/
+
+#Ignor IDE dir
+.idea/
+
+#Ignor git and cache dirs
+.git
+.cache
+
+
+#Ignor logs and report
+allure-report/
+allure-results/
+geckodriver.log
