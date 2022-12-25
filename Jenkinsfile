@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-				sh '/var/jenkins_home/.local/bin/pytest -v tests --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION}'
+				sh './venv/lib/python3.8/site-packages/pytest -v tests --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION}'
             }
     }
         stage('report-xml') {
