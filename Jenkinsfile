@@ -10,7 +10,7 @@ pipeline {
         }
         stage('test') {
             steps {
-				sh '/var/lib/jenkins/workspace/db-declarative2/pytest -v tests -n${NUMBER} --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION} --junitxml=report.xml'
+				sh './venv/lib/python3.8/site-packages/pytest -v tests -n${NUMBER} --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION} --junitxml=report.xml'
 
             }
         }
