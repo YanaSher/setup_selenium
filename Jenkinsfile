@@ -2,34 +2,40 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                sh 'chmod +x install.sh'
-                sh './install.sh'
+                sh 'g++ main.ru -o simple-db'
             }
         }
-        stage('Test') {
+        stage('test') {
             steps {
-                sh '/var/jenkins_home/.local/bin/pytest -v tests -n${NUMBER} --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION}'
+				sh """
+				    PATH=$PATH:$WORKSPACE
+				    python3 -m venv venv
+				    . venv/bin/activate
+				    pip3 install -r tests/requirements.txt
+				    pytest -v tests -n${NUMBER} --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION} --junitxml=report.xml
+                """
             }
         }
-    }
-
-    post {
-
-        always {
-
-            script {
-                allure([
+        stage('report-xml') {
+            steps {
+                junit 'report.xml'
+            }
+        }
+        stage('report-allure') {
+            steps {
+                script {
+                    allure([
                         includeProperties: false,
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
                         results: [[path: 'allure-results']]
-                ])
+                    ])
+                }
             }
-
-            cleanWs()
         }
     }
 }
+Footer
