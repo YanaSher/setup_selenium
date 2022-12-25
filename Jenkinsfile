@@ -10,7 +10,7 @@ pipeline {
         }
         stage('test') {
             steps {
-				sh 'pytest -v tests -n${NUMBER} --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION} --junitxml=report.xml'
+				sh 'pytest -v tests --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION} --junitxml=report.xml'
 
             }
         }
