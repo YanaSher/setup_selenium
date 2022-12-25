@@ -1,5 +1,0 @@
-INFO     test_product_page_external:conftest.py:42 ===> Test test_product_page_external started at 2022-11-06 23:35:00.506798
-DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:347 POST http://172.17.0.1:4444/wd/hub/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "firefox", "browserVersion": null, "selenoid:options": {"enableVNC": "True", "enableVideo": "False"}}}, "desiredCapabilities": {"browserName": "firefox", "browserVersion": null, "name": "opencart", "selenoid:options": {"enableVNC": "True", "enableVideo": "False"}}}
-DEBUG    urllib3.connectionpool:connectionpool.py:228 Starting new HTTP connection (1): 172.17.0.1:4444
-DEBUG    urllib3.connectionpool:connectionpool.py:456 http://172.17.0.1:4444 "POST /wd/hub/session HTTP/1.1" 400 172
-DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:398 Finished Request
