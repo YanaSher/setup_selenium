@@ -16,6 +16,7 @@ pipeline {
 				    . venv/bin/activate
 				    pip3 install -r tests/requirements.txt
 				    pytest -v tests
+                """
             }
         }
     }
