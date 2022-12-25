@@ -1,4 +1,10 @@
-PATH=$PATH:$WORKSPACE
-python3 -m venv venv
-. venv/bin/activate
-pip3 install -r requirements.txt
+#!/bin/bash
+
+FILE=venv/
+
+if [ ! -d "$FILE" ]; then
+    python3 -m venv venv
+fi
+
+source venv/bin/activate &&
+pip install -U pip && pip install -r requirements.txt

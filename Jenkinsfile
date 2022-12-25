@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'chmod +x install.sh'
                 sh './install.sh'
             }
         }
-        stage('test') {
+        stage('Test') {
             steps {
 				sh 'pytest -v tests --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION}'
 
