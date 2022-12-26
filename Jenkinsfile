@@ -12,7 +12,7 @@ pipeline {
             steps {
 				sh """
 				    . venv/bin/activate
-				    pytest -v tests
+				     pytest -v tests --url http://192.168.0.207:8081/ --executor 172.17.0.1 --browser MicrosoftEdge --bv 100.0
                 """
             }
         }
