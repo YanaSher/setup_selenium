@@ -12,7 +12,7 @@ pipeline {
             steps {
 				sh """
 				    . venv/bin/activate
-				    pytest -v tests --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION}
+				    pytest -v tests -n${NUMBER} --url ${URL} --executor ${EXECUTOR} --browser ${BROWSER_NAME} --bv ${BROWSER_VERSION}
                 """
             }
     }
