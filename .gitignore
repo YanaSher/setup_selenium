@@ -131,7 +131,6 @@ dmypy.json
 .pytest_cache/
 .vscode/
 .vs_code/
-logs/
 allure-report/
 allure-results/
 geckodriver.log
