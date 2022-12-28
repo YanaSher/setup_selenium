@@ -50,13 +50,12 @@ class AdminSystemPage(BasePage):
         self.click_element(AdminSystemPageLocator.SAVE_BUTTON)
 
     @allure.step("Проверка сообщения о том, что пользователь создан успешно")
-    def verify_success_message(self, success_message):
+    def verify_success_message(self):
         try:
             success_message = self.get_text(AdminSystemPageLocator.SUCCESS_MESSAGE)
             success_message = success_message[:-2]
             assert success_message == "Success: You have modified users!"
         except AssertionError:
-            self.logger.info(f"{success_message}!= Success: You have modified users!")
             allure.attach(
                 name=self.browser.session_id,
                 body=self.browser.get_screenshot_as_png(),
