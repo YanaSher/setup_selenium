@@ -49,7 +49,7 @@ class AdminSystemPage(BasePage):
     def click_save_button(self):
         self.click_element(AdminSystemPageLocator.SAVE_BUTTON)
 
-    @allure.step("Проверка сообщения о том, что пользователь создан успешно")
+    @allure.step("Проверка сообщения о том, что действие выполнено успешно")
     def verify_success_message(self):
         try:
             success_message = self.get_text(AdminSystemPageLocator.SUCCESS_MESSAGE)
