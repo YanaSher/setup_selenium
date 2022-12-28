@@ -4,18 +4,12 @@ from randomaizer import random_string, random_email
 from page_objects.base_page import BasePage
 from page_objects.locators.admin_system_page_locator import AdminSystemPageLocator
 
-class AdminSystemPage(BasePage):
 
-    # def __init__(self, browser):
-    #     super().__init__(browser)
-    #     self.text_name = "Igor"
+class AdminSystemPage(BasePage):
 
     @allure.step("Нажатие кнопки - добавление юзера")
     def click_add_user_button(self):
         self.click_element(AdminSystemPageLocator.ADD_USER_BUTTON)
-
-    #def input_user_name(self):
-     #   self.input_text(AdminSystemPageLocator.INPUT_USER_NAME, self.text_name)
 
     @allure.step("Ввод ника пользователя")
     def input_user_name(self, text):

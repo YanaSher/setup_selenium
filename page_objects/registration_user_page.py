@@ -65,7 +65,7 @@ class RegistrationUserPage(BasePage):
 
     @allure.step("Ввод телефонного номера")
     def input_telephone(self):
-        self.input_text(RegistrationUserLocator.TELEPHONE_INPUT, random_telefone_number())
+        self.input_text(RegistrationUserLocator.TELEPHONE_INPUT, random_telefone_number(11))
 
     @allure.step("Ввод пароля")
     def input_password(self, text):
