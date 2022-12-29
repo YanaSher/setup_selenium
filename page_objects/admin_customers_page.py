@@ -5,7 +5,6 @@ from page_objects.base_page import BasePage
 from page_objects.locators.admin_customers_page_locator import AdminCustomersPageLocator
 
 
-
 class AdminCustomerPage(BasePage):
 
     @allure.step("Нажатие кнопки - добавление кастомера")
@@ -109,7 +108,7 @@ class AdminCustomerPage(BasePage):
         self.input_text(AdminCustomersPageLocator.TELEPHONE_INPUT, random_telefone_number(33))
 
     @allure.step("Проверка появления сообщения, о том, что введён невалидный пароль")
-    def verify_error_message_password(self, locator: tuple):
+    def verify_error_message_password(self):
         try:
             success_message = self.get_text(AdminCustomersPageLocator.ERROR_MESSAGE)
             assert success_message == "Password must be between 4 and 20 characters!"
@@ -119,7 +118,7 @@ class AdminCustomerPage(BasePage):
                 body=self.browser.get_screenshot_as_png(),
                 attachment_type=allure.attachment_type.PNG
             )
-            raise AssertionError("Cant find element by locator: {}".format(locator))
+            raise AssertionError("Cant find element")
 
     @allure.step("Ввод слишком короткого пароля, меньше 4 символов")
     def input_shot_password(self):
@@ -141,4 +140,3 @@ class AdminCustomerPage(BasePage):
     @allure.step("Ввод рандомного повтора пароля в 13 символов")
     def input_random_confirm_password(self):
         self.input_text(AdminCustomersPageLocator.CONFIRM_PASSWORD_INPUT, random_string(13))
-

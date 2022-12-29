@@ -16,4 +16,3 @@ class AdminCustomersPageLocator:
     INPUT_CUSTOMERS_NAME_IN_FILTER = (By.CSS_SELECTOR, "#input-name")
     BUTTON_FILTER = (By.CSS_SELECTOR, "#button-filter")
     ERROR_MESSAGE = (By.CSS_SELECTOR, ".text-danger")
-

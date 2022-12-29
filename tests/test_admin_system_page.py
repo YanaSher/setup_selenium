@@ -2,6 +2,7 @@ from page_objects.admin_system_page import AdminSystemPage
 from page_objects.admin_page import AdminPage
 from page_objects.elements.admin_navigator_menu import AdminNavigatorMenu
 
+
 def test_add_user(browser, url):
     admin_system_page = AdminPage(browser)
     admin_system_page.open(url)
@@ -24,7 +25,8 @@ def test_add_user(browser, url):
     admin_system_page.click_delete_user_button()
     admin_system_page.alert_delete_product(browser)
 
-def test_dont_created_user_with_the_same_name(browser,url):
+
+def test_dont_created_user_with_the_same_name(browser, url):
     admin_system_page = AdminPage(browser)
     admin_system_page.open(url)
     admin_system_page.login_admin("user", "bitnami")
@@ -59,7 +61,6 @@ def test_dont_created_user_with_the_same_name(browser,url):
     admin_system_page.alert_delete_product(browser)
 
 
-
 def test_delete_user(browser, url):
     admin_system_page = AdminPage(browser)
     admin_system_page.open(url)
@@ -82,5 +83,3 @@ def test_delete_user(browser, url):
     admin_system_page.click_delete_user_button()
     admin_system_page.alert_delete_product(browser)
     admin_system_page.verify_success_message()
-
-
