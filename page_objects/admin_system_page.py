@@ -61,6 +61,7 @@ class AdminSystemPage(BasePage):
                 body=self.browser.get_screenshot_as_png(),
                 attachment_type=allure.attachment_type.PNG
             )
+            raise AssertionError("Cant find element")
 
     @allure.step("Выбор чекбокса с нужным пользователем")
     def click_check_box(self, username):
