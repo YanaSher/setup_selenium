@@ -109,7 +109,7 @@ class AdminCustomerPage(BasePage):
         self.input_text(AdminCustomersPageLocator.TELEPHONE_INPUT, random_telefone_number(33))
 
     @allure.step("Проверка появления сообщения, о том, что введён невалидный пароль")
-    def verify_error_message_password(self):
+    def verify_error_message_password(self, locator: tuple):
         try:
             success_message = self.get_text(AdminCustomersPageLocator.ERROR_MESSAGE)
             assert success_message == "Password must be between 4 and 20 characters!"
@@ -119,6 +119,7 @@ class AdminCustomerPage(BasePage):
                 body=self.browser.get_screenshot_as_png(),
                 attachment_type=allure.attachment_type.PNG
             )
+            raise AssertionError("Cant find element by locator: {}".format(locator))
 
     @allure.step("Ввод слишком короткого пароля, меньше 4 символов")
     def input_shot_password(self):
